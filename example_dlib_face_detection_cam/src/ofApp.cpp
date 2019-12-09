@@ -50,12 +50,12 @@ void ofApp::setup()
 void ofApp::update(){
     cam.update();
     if(cam.isFrameNew()){
-        // detectFace
-        ofPixels pixels;
         pixels = cam.getPixels();
         
-        dlib::pyramid_up(pixels);
+        // dlib::pyramid_up(pixels);
         faceRects = detector(pixels);
+
+        image.setFromPixels(pixels);
 
         // Set the image from the pixels.
         // image.setFromPixels(pixels);
@@ -69,7 +69,7 @@ void ofApp::draw()
     ofNoFill();
     ofSetColor(ofColor::white);
 
-    cam.draw(0, 0);
+    image.draw(0, 0);
 
     for (auto& faceRect: faceRects)
     {

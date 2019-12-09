@@ -34,7 +34,8 @@ public:
     void update() override;
 
     // Our image.
-    // ofImage image;
+    ofPixels pixels;
+    ofImage image;
     ofVideoGrabber cam;
 
     // Our face detection bounding boxes.
